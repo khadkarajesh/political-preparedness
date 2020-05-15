@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.example.android.politicalpreparedness.MainActivity">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ballot_logo" />
+
+        <!-- TODO: Add image for home screen logo. -->
+
+        <!-- TODO: Add Button to navigate to upcoming elections. -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/representativeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Representative" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/upcomingButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Upcomming" />
+
+        <!-- TODO: Add Button to navigate to representatives. -->
+
+    </LinearLayout>
+</layout>
