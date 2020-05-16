@@ -14,6 +14,7 @@ import com.example.android.politicalpreparedness.R
 import com.example.android.politicalpreparedness.databinding.ViewholderRepresentativeBinding
 import com.example.android.politicalpreparedness.network.models.Channel
 import com.example.android.politicalpreparedness.representative.model.Representative
+import kotlinx.android.synthetic.main.viewholder_representative.view.*
 
 class RepresentativeListAdapter : ListAdapter<Representative, RepresentativeViewHolder>(RepresentativeDiffCallback()) {
 
@@ -35,11 +36,8 @@ class RepresentativeViewHolder(val binding: ViewholderRepresentativeBinding) : R
         binding.personName.text = item.official.name
         binding.partyName.text = item.official.party
         binding.officeName.text = item.office.name
-        showSocialLinks(item.official.channels!!)
-        showWWWLinks(item.official.urls!!)
-
-        //TODO: Show social links  Hint: Use provided helper methods
-        //TODO: Show www link  Hint: Use provided helper methods
+        showSocialLinks(item.official.channels)
+        showWWWLinks(item.official.urls)
 
         binding.executePendingBindings()
     }
@@ -52,9 +50,7 @@ class RepresentativeViewHolder(val binding: ViewholderRepresentativeBinding) : R
         }
     }
 
-    //TODO: Add companion object to inflate ViewHolder (from)
-
-    private fun showSocialLinks(channels: List<Channel>) {
+    private fun showSocialLinks(channels: List<Channel>?) {
         val facebookUrl = getFacebookUrl(channels)
         if (!facebookUrl.isNullOrBlank()) {
             enableLink(binding.facebook, facebookUrl)
@@ -66,20 +62,22 @@ class RepresentativeViewHolder(val binding: ViewholderRepresentativeBinding) : R
         }
     }
 
-    private fun showWWWLinks(urls: List<String>) {
-        enableLink(binding.www, urls.first())
+    private fun showWWWLinks(urls: List<String>?) {
+        if (!urls.isNullOrEmpty()) {
+            enableLink(binding.www, urls.first())
+        }
     }
 
-    private fun getFacebookUrl(channels: List<Channel>): String? {
-        return channels.filter { channel -> channel.type == "Facebook" }
-                .map { channel -> "https://www.facebook.com/${channel.id}" }
-                .firstOrNull()
+    private fun getFacebookUrl(channels: List<Channel>?): String? {
+        return channels?.filter { channel -> channel.type == "Facebook" }
+                ?.map { channel -> "https://www.facebook.com/${channel.id}" }
+                ?.firstOrNull()
     }
 
-    private fun getTwitterUrl(channels: List<Channel>): String? {
-        return channels.filter { channel -> channel.type == "Twitter" }
-                .map { channel -> "https://www.twitter.com/${channel.id}" }
-                .firstOrNull()
+    private fun getTwitterUrl(channels: List<Channel>?): String? {
+        return channels?.filter { channel -> channel.type == "Twitter" }
+                ?.map { channel -> "https://www.twitter.com/${channel.id}" }
+                ?.firstOrNull()
     }
 
     private fun enableLink(view: ImageView, url: String) {
@@ -105,8 +103,3 @@ class RepresentativeDiffCallback : DiffUtil.ItemCallback<Representative>() {
     }
 
 }
-
-
-//TODO: Create RepresentativeDiffCallback
-
-//TODO: Create RepresentativeListener
