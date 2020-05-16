@@ -9,7 +9,7 @@ import com.example.android.politicalpreparedness.network.models.Election
 import kotlinx.coroutines.launch
 
 //TODO: Construct ViewModel and provide election datasource
-class ElectionsViewModel(private val api: CivicsApiService) : ViewModel() {
+class ElectionsViewModel(private val api: CivicsApiService, private val dataSource: ElectionDataSource) : ViewModel() {
     val upcomingElections = MutableLiveData<List<Election>>()
     val savedElections = MutableLiveData<List<Election>>()
 

@@ -18,9 +18,4 @@ interface ElectionDao {
 
     @Query("DELETE FROM election_table where id=:id")
     suspend fun deleteById(id: Int)
-
-
-    @Query("DELETE FROM election_table")
-    suspend fun deleteAllElections()
-
 }

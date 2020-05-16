@@ -3,6 +3,8 @@
     <string name="app_name">Political Preparedness</string>
     <string name="txt_upcoming_election">Upcoming Elections</string>
     <string name="txt_saved_elections">Saved Elections</string>
+    <string name="txt_follow_election">Follow Election</string>
+    <string name="txt_un_follow_election">Un follow Election</string>
 
     <!-- TODO: Add necessary string values -->
 
