@@ -45,11 +45,13 @@ class ElectionsFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         setupRecyclerView()
+        setupRecyclerviewForSavedElection()
     }
 
     override fun onResume() {
         super.onResume()
         viewModel.getUpcomingElections()
+        viewModel.getSavedElections()
     }
 
     private fun setupRecyclerView() {
@@ -59,4 +61,10 @@ class ElectionsFragment : Fragment() {
         binding.rvUpcomingElections.setup(adapter)
     }
 
+    private fun setupRecyclerviewForSavedElection() {
+        val adapter = ElectionListAdapter {
+            this.findNavController().navigate(ElectionsFragmentDirections.actionElectionsFragmentToElectionDetailFragment(it))
+        }
+        binding.rvSavedElections.setup(adapter)
+    }
 }

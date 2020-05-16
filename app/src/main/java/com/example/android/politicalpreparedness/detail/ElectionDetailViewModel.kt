@@ -21,12 +21,12 @@ class ElectionDetailViewModel(private val dataSource: ElectionDataSource) : View
 
     fun followElection() {
         viewModelScope.launch {
-            isFollowed.value = !isFollowed.value!!
             if (isFollowed.value!!) {
                 dataSource.deleteById(election.id)
             } else {
                 dataSource.saveElection(election!!)
             }
+            isFollowed.value = !isFollowed.value!!
         }
     }
 

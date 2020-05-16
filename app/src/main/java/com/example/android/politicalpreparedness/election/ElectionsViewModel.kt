@@ -25,6 +25,12 @@ class ElectionsViewModel(private val api: CivicsApiService, private val dataSour
         }
     }
 
+    fun  getSavedElections(){
+        viewModelScope.launch {
+            savedElections.value = dataSource.getElections()
+        }
+    }
+
 
     //TODO: Create live data val for upcoming elections
 
