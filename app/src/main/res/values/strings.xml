@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Political Preparedness</string>
+    <string name="txt_upcoming_election">Upcoming Elections</string>
+    <string name="txt_saved_elections">Saved Elections</string>
 
     <!-- TODO: Add necessary string values -->
 

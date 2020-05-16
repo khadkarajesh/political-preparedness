@@ -67,6 +67,8 @@ dependencies {
     implementation "com.squareup.moshi:moshi-kotlin:$version_moshi"
     implementation "com.squareup.moshi:moshi-adapters:$version_moshi"
 
+//    implementation "com.squareup.okhttp3:logging-interceptor:4.4.0"
+
     // Glide
     //TODO: Add Glide Implementation
 

@@ -9,6 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.android.politicalpreparedness.R
 import com.example.android.politicalpreparedness.databinding.FragmentElectionBinding
+import com.example.android.politicalpreparedness.election.adapter.ElectionListAdapter
+import com.example.android.politicalpreparedness.utils.setup
 
 class ElectionsFragment : Fragment() {
 
@@ -37,5 +39,22 @@ class ElectionsFragment : Fragment() {
     }
 
     //TODO: Refresh adapters when fragment loads
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        setupRecyclerView()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.getUpcomingElections()
+    }
+
+    private fun setupRecyclerView() {
+        val adapter = ElectionListAdapter {
+
+        }
+        binding.rvUpcomingElections.setup(adapter)
+    }
 
 }

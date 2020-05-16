@@ -9,5 +9,5 @@ data class Election(
         @PrimaryKey val id: Int,
         @ColumnInfo(name = "name") val name: String,
         @ColumnInfo(name = "electionDay") val electionDay: Date,
-        @Embedded(prefix = "division_") @Json(name = "ocdDivisionId") val division: Division
+        @Json(name = "ocdDivisionId") val division: String
 )

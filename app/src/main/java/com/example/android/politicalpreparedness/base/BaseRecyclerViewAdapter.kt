@@ -1,3 +1,5 @@
+package com.example.android.politicalpreparedness.base
+
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
@@ -5,10 +7,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
-import com.example.android.politicalpreparedness.base.DataBindingViewHolder
 
 abstract class BaseRecyclerViewAdapter<T>(private val callback: ((item: T) -> Unit)? = null) :
-        RecyclerView.Adapter<DataBindingViewHolder<T>>() {
+    RecyclerView.Adapter<DataBindingViewHolder<T>>() {
 
     private var _items: MutableList<T> = mutableListOf()
 
@@ -24,7 +25,7 @@ abstract class BaseRecyclerViewAdapter<T>(private val callback: ((item: T) -> Un
         val layoutInflater = LayoutInflater.from(parent.context)
 
         val binding = DataBindingUtil
-                .inflate<ViewDataBinding>(layoutInflater, getLayoutRes(viewType), parent, false)
+            .inflate<ViewDataBinding>(layoutInflater, getLayoutRes(viewType), parent, false)
 
         binding.lifecycleOwner = getLifecycleOwner()
 
