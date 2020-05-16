@@ -6,30 +6,34 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="center"
         android:orientation="vertical"
+        android:padding="@dimen/padding"
         tools:context="com.example.android.politicalpreparedness.MainActivity">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="@dimen/banner_margin"
             app:srcCompat="@drawable/ballot_logo" />
-
-        <!-- TODO: Add image for home screen logo. -->
-
-        <!-- TODO: Add Button to navigate to upcoming elections. -->
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/representativeButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Representative" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/upcomingButton"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Upcomming" />
+            android:background="@color/colorPrimaryDark"
+            android:text="Upcoming Elections"
+            android:textColor="@android:color/white" />
 
-        <!-- TODO: Add Button to navigate to representatives. -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/representativeButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin"
+            android:background="@color/colorPrimaryDark"
+            android:text="Find My Representatives"
+            android:textColor="@android:color/white" />
 
     </LinearLayout>
 </layout>

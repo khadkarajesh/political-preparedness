@@ -4,6 +4,7 @@
     <dimen name="padding">16dp</dimen>
 
     <dimen name="margin">16dp</dimen>
+    <dimen name="banner_margin">100dp</dimen>
 
     <!-- TODO: Add necessary dimension values -->s
 
