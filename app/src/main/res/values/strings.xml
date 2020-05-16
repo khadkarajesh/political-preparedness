@@ -5,6 +5,15 @@
     <string name="txt_saved_elections">Saved Elections</string>
     <string name="txt_follow_election">Follow Election</string>
     <string name="txt_un_follow_election">Un follow Election</string>
+    <string name="find_my_representative">Find my representative</string>
+    <string name="use_my_location">Use my location</string>
+
+
+    <string name="permission_rationale_title">App Needs Permission</string>
+    <string name="permission_rationale_message">App requires yours location to provide precise information of your representatives</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">Ok</string>
+    <string name="txt_settings">Settings</string>
 
     <!-- TODO: Add necessary string values -->
 

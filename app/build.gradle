@@ -69,6 +69,10 @@ dependencies {
 
     implementation "com.facebook.stetho:stetho:$stetho_version"
 
+    implementation "com.karumi:dexter:$dexter_version"
+
+    implementation "com.google.android.material:material:$material_version"
+
     // Glide
     //TODO: Add Glide Implementation
 
