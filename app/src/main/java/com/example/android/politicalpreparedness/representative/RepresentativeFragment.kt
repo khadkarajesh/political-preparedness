@@ -61,6 +61,7 @@ class DetailFragment : Fragment() {
         }
 
         binding.buttonSearch.setOnClickListener {
+            hideKeyboard()
             val address = model.toFormattedString(binding.addressLine1.text.toString(),
                     binding.addressLine2.text.toString(),
                     binding.city.text.toString(),
@@ -165,6 +166,7 @@ class DetailFragment : Fragment() {
             binding.addressLine2.setText(address.line2)
             binding.city.setText(address.city)
             binding.zip.setText(address.zip)
+            model.state.value = address.state
         }
     }
     //TODO: Get location from LocationServices

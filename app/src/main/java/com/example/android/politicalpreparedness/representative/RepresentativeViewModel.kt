@@ -9,6 +9,7 @@ import kotlinx.coroutines.launch
 
 class RepresentativeViewModel(val api: CivicsApiService) : ViewModel() {
     var representatives: MutableLiveData<List<Representative>> = MutableLiveData()
+    var state: MutableLiveData<String> = MutableLiveData()
 
     //TODO: Establish live data for representatives and address
 
