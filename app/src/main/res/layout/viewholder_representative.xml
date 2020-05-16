@@ -12,12 +12,12 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp">
+        android:layout_height="@dimen/election_item_size">
 
         <ImageView
             android:id="@+id/profile_image"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="@dimen/avatar_size"
+            android:layout_height="@dimen/avatar_size"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -27,8 +27,7 @@
             android:id="@+id/person_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="TextView"
+            android:layout_marginStart="@dimen/margin"
             app:layout_constraintStart_toEndOf="@+id/profile_image"
             app:layout_constraintTop_toBottomOf="@+id/office_name" />
 
@@ -36,9 +35,8 @@
             android:id="@+id/office_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="12dp"
-            android:text="TextView"
+            android:layout_marginStart="@dimen/margin"
+            android:layout_marginTop="@dimen/margin"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             app:layout_constraintStart_toEndOf="@+id/profile_image"
             app:layout_constraintTop_toTopOf="parent" />
@@ -47,16 +45,16 @@
             android:id="@+id/party_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="@dimen/margin"
             app:layout_constraintStart_toEndOf="@+id/profile_image"
             app:layout_constraintTop_toBottomOf="@+id/person_name"
             tools:text="Republic Party" />
 
         <ImageView
             android:id="@+id/twitter"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginEnd="8dp"
+            android:layout_width="@dimen/social_icon_size"
+            android:layout_height="@dimen/social_icon_size"
+            android:layout_marginEnd="@dimen/margin_small"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/facebook"
             app:layout_constraintTop_toTopOf="parent"
@@ -65,8 +63,8 @@
 
         <ImageView
             android:id="@+id/facebook"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="@dimen/social_icon_size"
+            android:layout_height="@dimen/social_icon_size"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -75,9 +73,9 @@
 
         <ImageView
             android:id="@+id/www"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginEnd="8dp"
+            android:layout_width="@dimen/social_icon_size"
+            android:layout_height="@dimen/social_icon_size"
+            android:layout_marginEnd="@dimen/margin_small"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/twitter"
             app:layout_constraintTop_toTopOf="parent"
