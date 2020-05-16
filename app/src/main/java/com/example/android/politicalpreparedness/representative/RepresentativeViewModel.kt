@@ -1,8 +1,14 @@
 package com.example.android.politicalpreparedness.representative
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.android.politicalpreparedness.network.CivicsApiService
+import com.example.android.politicalpreparedness.representative.model.Representative
+import kotlinx.coroutines.launch
 
-class RepresentativeViewModel: ViewModel() {
+class RepresentativeViewModel(val api: CivicsApiService) : ViewModel() {
+    var representatives: MutableLiveData<List<Representative>> = MutableLiveData()
 
     //TODO: Establish live data for representatives and address
 
@@ -22,5 +28,22 @@ class RepresentativeViewModel: ViewModel() {
     //TODO: Create function get address from geo location
 
     //TODO: Create function to get address from individual fields
+
+    fun findRepresentatives(address: String) {
+        viewModelScope.launch {
+            val (offices, officials) = api.getRepresentativesAsync(address).await()
+            print("reached")
+            representatives.value = offices.flatMap { office -> office.getRepresentatives(officials) }
+            print("parsed")
+
+        }
+    }
+
+    fun toFormattedString(line1: String, line2: String, city: String, state: String, zip: String): String {
+        var output = line1.plus("\n")
+        if (!line2.isNullOrEmpty()) output = output.plus(line2).plus("\n")
+        output = output.plus("$city, $state $zip")
+        return output
+    }
 
 }

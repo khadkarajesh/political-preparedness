@@ -5,7 +5,7 @@ import com.squareup.moshi.Json
 
 data class Office (
     val name: String,
-    @Json(name="divisionId") val division:Division,
+    @Json(name="divisionId") val division:String,
     @Json(name="officialIndices") val officials: List<Int>
 ) {
     fun getRepresentatives(officials: List<Official>): List<Representative> {

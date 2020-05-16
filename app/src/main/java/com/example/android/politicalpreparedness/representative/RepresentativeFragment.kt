@@ -16,10 +16,14 @@ import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.android.politicalpreparedness.BuildConfig
 import com.example.android.politicalpreparedness.R
 import com.example.android.politicalpreparedness.databinding.FragmentRepresentativeBinding
 import com.example.android.politicalpreparedness.network.models.Address
+import com.example.android.politicalpreparedness.representative.adapter.RepresentativeListAdapter
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -39,7 +43,7 @@ class DetailFragment : Fragment() {
     }
 
     //TODO: Declare ViewModel
-    private val model: RepresentativeViewModel by activityViewModels()
+    private val model: RepresentativeViewModel by viewModels { RepresentativeViewModelFactory() }
     private lateinit var binding: FragmentRepresentativeBinding
     private val settingRequestCode = 101
     private lateinit var fusedLocationClient: FusedLocationProviderClient
@@ -56,6 +60,15 @@ class DetailFragment : Fragment() {
             checkPermission()
         }
 
+        binding.buttonSearch.setOnClickListener {
+            val address = model.toFormattedString(binding.addressLine1.text.toString(),
+                    binding.addressLine2.text.toString(),
+                    binding.city.text.toString(),
+                    binding.state.selectedItem.toString(),
+                    binding.zip.toString())
+            model.findRepresentatives(address)
+        }
+
         return binding.root
 
         //TODO: Establish bindings
@@ -66,6 +79,20 @@ class DetailFragment : Fragment() {
 
         //TODO: Establish button listeners for field and location search
 
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        setupRecyclerView()
+    }
+
+    private fun setupRecyclerView() {
+        val adapter = RepresentativeListAdapter()
+        binding.rvRepresentatives.adapter = adapter
+        binding.rvRepresentatives.layoutManager = LinearLayoutManager(activity)
+        model.representatives.observe(viewLifecycleOwner, Observer {
+            it.let(adapter::submitList)
+        })
     }
 
     private fun checkPermission() {

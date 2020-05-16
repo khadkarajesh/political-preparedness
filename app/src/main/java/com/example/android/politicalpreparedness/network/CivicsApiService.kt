@@ -2,6 +2,7 @@ package com.example.android.politicalpreparedness.network
 
 import com.example.android.politicalpreparedness.network.jsonadapter.ElectionAdapter
 import com.example.android.politicalpreparedness.network.models.ElectionResponse
+import com.example.android.politicalpreparedness.network.models.RepresentativeResponse
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.FromJson
 import com.squareup.moshi.Moshi
@@ -11,6 +12,7 @@ import kotlinx.coroutines.Deferred
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Query
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
@@ -58,6 +60,9 @@ interface CivicsApiService {
     //TODO: Add elections API Call
     @GET("elections")
     fun getElectionsAsync(): Deferred<ElectionResponse>
+
+    @GET("representatives")
+    fun getRepresentativesAsync(@Query("address") address: String): Deferred<RepresentativeResponse>
 
     //TODO: Add voterinfo API Call
 

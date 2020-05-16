@@ -31,7 +31,12 @@ class RepresentativeViewHolder(val binding: ViewholderRepresentativeBinding) : R
 
     fun bind(item: Representative) {
         binding.representative = item
-        binding.representativePhoto.setImageResource(R.drawable.ic_profile)
+        binding.profileImage.setImageResource(R.drawable.ic_profile)
+        binding.personName.text = item.official.name
+        binding.partyName.text = item.official.party
+        binding.officeName.text = item.office.name
+        showSocialLinks(item.official.channels!!)
+        showWWWLinks(item.official.urls!!)
 
         //TODO: Show social links  Hint: Use provided helper methods
         //TODO: Show www link  Hint: Use provided helper methods
@@ -52,17 +57,17 @@ class RepresentativeViewHolder(val binding: ViewholderRepresentativeBinding) : R
     private fun showSocialLinks(channels: List<Channel>) {
         val facebookUrl = getFacebookUrl(channels)
         if (!facebookUrl.isNullOrBlank()) {
-            enableLink(binding.facebookIcon, facebookUrl)
+            enableLink(binding.facebook, facebookUrl)
         }
 
         val twitterUrl = getTwitterUrl(channels)
         if (!twitterUrl.isNullOrBlank()) {
-            enableLink(binding.twitterIcon, twitterUrl)
+            enableLink(binding.twitter, twitterUrl)
         }
     }
 
     private fun showWWWLinks(urls: List<String>) {
-        enableLink(binding.wwwIcon, urls.first())
+        enableLink(binding.www, urls.first())
     }
 
     private fun getFacebookUrl(channels: List<Channel>): String? {
