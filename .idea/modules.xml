@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="ProjectModuleManager">
-    <modules>
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="political prepared ness/app" />
-      <module fileurl="file://$PROJECT_DIR$/political prepared ness.iml" filepath="$PROJECT_DIR$/political prepared ness.iml" group="political prepared ness" />
-    </modules>
-  </component>
-</project>
