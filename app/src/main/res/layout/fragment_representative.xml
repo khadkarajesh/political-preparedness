@@ -15,7 +15,9 @@
     <androidx.constraintlayout.motion.widget.MotionLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/padding">
+        android:paddingLeft="@dimen/padding"
+        android:paddingRight="@dimen/padding"
+        app:layoutDescription="@xml/representative_animation">
 
         <!-- TODO: Add visual styling and content -->
         <TextView
