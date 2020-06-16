@@ -9,7 +9,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
 
 abstract class BaseRecyclerViewAdapter<T>(private val callback: ((item: T) -> Unit)? = null) :
-    RecyclerView.Adapter<DataBindingViewHolder<T>>() {
+        RecyclerView.Adapter<DataBindingViewHolder<T>>() {
 
     private var _items: MutableList<T> = mutableListOf()
 
@@ -25,7 +25,7 @@ abstract class BaseRecyclerViewAdapter<T>(private val callback: ((item: T) -> Un
         val layoutInflater = LayoutInflater.from(parent.context)
 
         val binding = DataBindingUtil
-            .inflate<ViewDataBinding>(layoutInflater, getLayoutRes(viewType), parent, false)
+                .inflate<ViewDataBinding>(layoutInflater, getLayoutRes(viewType), parent, false)
 
         binding.lifecycleOwner = getLifecycleOwner()
 
@@ -48,6 +48,7 @@ abstract class BaseRecyclerViewAdapter<T>(private val callback: ((item: T) -> Un
      * @param items to be merged
      */
     fun addData(items: List<T>) {
+        _items.clear()
         _items.addAll(items)
         notifyDataSetChanged()
     }

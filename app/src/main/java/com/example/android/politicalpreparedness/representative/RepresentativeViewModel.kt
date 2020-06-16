@@ -37,6 +37,7 @@ class RepresentativeViewModel(val api: CivicsApiService) : ViewModel() {
         viewModelScope.launch {
             try {
                 val (offices, officials) = api.getRepresentativesAsync(address).await()
+                representatives.value
                 representatives.value = offices.flatMap { office -> office.getRepresentatives(officials) }
             } catch (e: HttpException) {
                 error.value = e.localizedMessage
