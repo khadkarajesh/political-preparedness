@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -8,24 +10,31 @@
             type="com.example.android.politicalpreparedness.network.models.Election" />
     </data>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingTop="@dimen/margin"
-        android:paddingBottom="@dimen/margin">
+        android:paddingTop="@dimen/margin_small"
+        android:paddingBottom="@dimen/margin_small">
 
         <TextView
             android:id="@+id/election_name"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:text="@{item.name}"
             android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-            android:text="@{item.name}" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/election_date"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@{item.electionDay.toString()}" />
-    </LinearLayout>
+            android:layout_marginTop="4dp"
+            android:text="@{item.electionDay.toString()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/election_name" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
