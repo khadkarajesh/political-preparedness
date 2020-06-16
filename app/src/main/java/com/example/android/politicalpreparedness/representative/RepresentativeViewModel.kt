@@ -6,10 +6,13 @@ import androidx.lifecycle.viewModelScope
 import com.example.android.politicalpreparedness.network.CivicsApiService
 import com.example.android.politicalpreparedness.representative.model.Representative
 import kotlinx.coroutines.launch
+import retrofit2.HttpException
+import retrofit2.Retrofit
 
 class RepresentativeViewModel(val api: CivicsApiService) : ViewModel() {
     var representatives: MutableLiveData<List<Representative>> = MutableLiveData()
     var state: MutableLiveData<String> = MutableLiveData()
+    var error: MutableLiveData<String> = MutableLiveData()
 
     //TODO: Establish live data for representatives and address
 
@@ -32,11 +35,12 @@ class RepresentativeViewModel(val api: CivicsApiService) : ViewModel() {
 
     fun findRepresentatives(address: String) {
         viewModelScope.launch {
-            val (offices, officials) = api.getRepresentativesAsync(address).await()
-            print("reached")
-            representatives.value = offices.flatMap { office -> office.getRepresentatives(officials) }
-            print("parsed")
-
+            try {
+                val (offices, officials) = api.getRepresentativesAsync(address).await()
+                representatives.value = offices.flatMap { office -> office.getRepresentatives(officials) }
+            } catch (e: HttpException) {
+                error.value = e.localizedMessage
+            }
         }
     }
 

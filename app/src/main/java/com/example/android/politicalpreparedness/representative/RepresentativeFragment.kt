@@ -27,6 +27,7 @@ import com.example.android.politicalpreparedness.representative.adapter.Represen
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.snackbar.Snackbar
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.PermissionDeniedResponse
@@ -70,16 +71,11 @@ class DetailFragment : Fragment() {
             model.findRepresentatives(address)
         }
 
+        model.error.observe(viewLifecycleOwner, Observer {
+            Snackbar.make(binding.root, "Failed to load representatives", Snackbar.LENGTH_LONG).show()
+        })
+
         return binding.root
-
-        //TODO: Establish bindings
-
-        //TODO: Define and assign Representative adapter
-
-        //TODO: Populate Representative adapter
-
-        //TODO: Establish button listeners for field and location search
-
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -176,7 +172,11 @@ class DetailFragment : Fragment() {
         val geocoder = Geocoder(context, Locale.getDefault())
         return geocoder.getFromLocation(location.latitude, location.longitude, 1)
                 .map { address ->
-                    Address(address.thoroughfare, address.subThoroughfare, address.locality, address.adminArea, address.postalCode)
+                    Address(address.thoroughfare ?: "",
+                            address.subThoroughfare ?: ""
+                            , address.locality
+                            ?: "", address.adminArea ?: "",
+                            address.postalCode ?: "")
                 }
                 .first()
     }
